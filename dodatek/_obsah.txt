@@ -1,0 +1,4 @@
+Dodatky ke školení:
+
+- environment_setup.R = kontrola základního nastevení erkové instalace
+- master.tex = LaTeXová šablona pro hezčí pdf soubory

@@ -5,7 +5,9 @@ libs/* linguist-vendored
 
 # vlastní prezka
 # ==============
+*.odp linguist-documentation
 *.html linguist-documentation
+*.pdf linguist-documentation
 *_files/* linguist-documentation
 
 # Source files
@@ -17,3 +19,6 @@ libs/* linguist-vendored
 *.Rdx   binary
 *.Rmd	text
 *.R  	text
+*.csv text
+*.xlsx text
+*.xls binary   

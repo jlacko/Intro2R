@@ -2,7 +2,7 @@
 
 Podkladové materiály ke školení Úvod do jazyka R od Jindry Lacka. 
 
-Repozitář je online na https://rstudio.cloud/project/499564; pro získání lokální kopie využijte tlačítko Clone or download. Kdo se cítí použije git, kdo se necítí použije zip - obojí platí stejně.
+Materiály ke kurzu běží v cloudovém erku na https://rstudio.cloud/project/499564; pro získání lokální kopie využijte tlačítko **Clone or download** zde na GitHubu. Kdo se cítí klonuje přes git, kdo se necítí stahne zip - výsledek je totožný.
 
 <p align="center">
   <img src="./extras/screenshot.png" alt="jak na stažení?"/>

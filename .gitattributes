@@ -20,5 +20,5 @@ libs/* linguist-vendored
 *.Rmd	text
 *.R  	text
 *.csv text
-*.xlsx text
+*.xlsx binary
 *.xls binary   

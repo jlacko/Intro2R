@@ -2,7 +2,7 @@
 
 # toto potřebuju:
 required <- c("rprojroot", "tidyverse", "curl", "readxl", "DBI", "RPostgreSQL", "odbc",
-              "stringi", "dbplyr", "lubridate", "scales", "sf", "RCzechia")
+              "stringi", "dbplyr", "lubridate", "scales", "sf", "RCzechia", "knitr", "kableExtra")
 # toto mám:
 installed <- installed.packages()[, 1]
 

@@ -1,0 +1,107 @@
+---
+title: "Cvičení: Import a struktury"
+---
+
+```{r setup}
+
+library(readr)
+library(readxl)
+
+```
+
+   
+# 1. 
+Do proměnné roboti načtěte obsah souboru RUR.rds z adresáře ../data 
+(ty dvě tečky jsou důležité!)
+
+```{r}
+
+roboti <- ___
+
+```
+
+# 2.
+Ukažte prvek z vektoru roboti na pozici 13; uvažujte operátor hranaté závorky
+[ = pravý Alt + f, ] = pravý Alt + g
+
+```{r}
+
+roboti___
+
+```
+
+# 3.
+Do proměnné potraviny načtěte obsah souboru potraviny.csv z adresáře ../data
+(vykopírujte kód z importovacího dialogu; věnujte pozornost oddělovačům)
+
+
+```{r}
+
+potraviny <- ___
+
+```
+
+
+#4.
+Proveďte kontrolní součet sloupce hodnota (očekávaná suma = 5460986.86).
+
+Uvažujte operátor dolar; $ = pravý Alt + ů
+```{r}
+
+sum(___) == 5460986.86
+```
+
+
+#5.
+Do objektu obyvatele načtěte obsah souboru pocet_obyvatel.xlsx z adresáře ../data
+(vykopírujte kód z importovacího dialogu; přeskočte prvních 5 řádků)
+
+```{r }
+
+obyvatele <- ___
+
+```
+
+#6.
+Proveďte kontrolní součet celkového počtu obyvatel (očekávaná hodnota = 10649800)
+
+```{r }
+
+sum(___) == 10649800
+
+```
+
+
+#7.
+Do objektu struktura načtěte ze souboru struktura_uzemi.txt oblast A2:C6260 z listu 1.1.2019 
+(vykopírujte kód)
+
+```{r }
+
+struktura <- ___
+
+```
+
+
+#8.
+Ověřte počty obcí dle statutů (H = hlavní město, S = statutární město etc.)
+Kolik je v ČR městysů (status typu T)?
+
+```{r }
+
+table(___status)
+
+```
+
+#9.
+Do proměnné rozsypany_caj načtěte text ze souboru ../data/rozsypany_caj.csv.
+Pozor, soubor je v netypickém kódování ISO-8859-2 (načtěte ho tak, aby byl čitelný!)
+
+
+```{r }
+
+rozsypany_caj <- ___
+
+View(rozsypany_caj)
+
+```

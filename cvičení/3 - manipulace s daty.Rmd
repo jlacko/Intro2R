@@ -1,0 +1,155 @@
+---
+title: "Cvičení: Manipulace s daty"
+---
+
+```{r setup}
+
+library(tidyverse)
+library(readxl)
+
+potraviny <- read_csv2("../data/potraviny.csv")
+
+uzemi <- read_excel("../data/struktura_uzemi.xlsx", 
+   sheet = "1.1.2019", skip = 1, range = "A2:C6260") %>% 
+   select(kod = `kód`, nazev = `název`, status)
+
+obce <- read_excel("../data/pocet_obyvatel.xlsx", skip = 5) %>% 
+   select(kod = `LAU 2`, nazev = `...3`, obyvatel = `Total...4`) %>% 
+   na.omit()
+```
+
+   
+# 1. 
+Máte načtené potraviny; spočtěte řádky. Do proměnné pivo uložte pouze pivo (cenový reprezentant 0213201). Jaký podíl z celkových řádků tvoří pivo?
+
+```{r}
+
+nrow(___)
+
+pivo <- potraviny %>% 
+   filter(___)
+   
+___(pivo) / ___(___)
+   
+   
+```
+
+# 2. 
+Stále máte potraviny; do proměnné urquell uložte řádky piva (cenový reprezentant 0213201) za Plzeňský kraj (kód území 3042). Spočtěte řádky.
+
+```{r}
+
+
+urquell <- potraviny %>% 
+   filter(___)
+   
+___(urquell)
+   
+   
+```
+
+# 3. 
+Stále máte potraviny; do proměnné alkohol uložte řádky piva (cenový reprezentant 0213201) nebo vína (cenový reprezentant 0212101) za republiku jako celek (kód území 19). Spočtěte řádky.
+
+```{r}
+
+
+alkohol <- potraviny %>% 
+   filter(___)
+   
+___(alkohol)
+   
+   
+```
+
+# 4. 
+Uvažujte potraviny. Vyberte pivo a hodnoty za republiku jako celek. Vytvořte novou proměnnou rok tak, že uplatníte funkci year z balíku lubridate na hodnoty sloupce období od.
+Seskupte podle roku a zjistěte počet záznamů (tally je OK).
+
+```{r}
+
+
+potraviny %>% 
+   filter(___) %>% 
+   mutate(rok = lubridate::year(___)) %>% 
+   group_by(___) %>% 
+   tally()
+
+```
+
+# 5. 
+Uvažujte pivo za republiku po letech z minulého příkladu. Místo počtu řádků zjistěte průměrnou cenu po letech.
+
+```{r}
+
+
+potraviny %>% 
+   filter(___) %>% 
+   mutate(___) %>% 
+   group_by(___) %>% 
+   summarise(prumer = ___)
+
+```
+
+# 6. 
+Uvažujte pivo po letech za všechny kraje. Vyberte hodnoty za rok 2016 po krajích, a setřiďte je od nejmenší k největší
+
+```{r}
+
+
+potraviny %>% 
+   ___ %>% 
+   ___ %>% 
+   summarise(prumer = ___) %>% 
+   arrange(___)
+
+```
+
+# 7.
+Uvažujte potraviny za Českou republiku. Pro každé datum obdobiod spočtěte náklady na výrobu pekáče buchet; buchty se skládají z 1/2 kg mouky, 2 vajec a decky mléka.
+
+```{r}
+
+potraviny %>% 
+   filter(___) %>% 
+   filter(reprcen_kod %in% c(___, ___, ___)) %>% 
+   select(___, ___ , ___) %>% 
+   ___(___, ___) %>% 
+   mutate(buchty = ___ * `0111201` + ___ * `0114201` + ___ * `0115101`)
+
+
+```
+
+# 8.
+Uvažujte tabulky obce a území. Jakou mají strukturu?
+Propojte je do objektu dataset pomocí společného klíče
+
+```{r}
+
+dataset <- inner_join(obce, uzemi, by = c("__" = "__"))
+
+```
+
+# 9.
+Uvažujte dataset obcí z předchozího příkladu. Spočtěte je podle statutu, a seřaďte od nejpočetnějšího k jediné Praze.
+
+```{r }
+
+dataset %>% 
+   ___(status) %>% 
+   tally() %>% 
+   ___(__ (n))
+   
+
+```
+
+# 10.
+Uvažujte dataset obcí. Vyberte tři největší městysy (městys je obec se statutem T).
+
+```{r }
+
+dataset %>% 
+   ___(___ =="T") %>% 
+   ___(3, obyvatel)
+
+```

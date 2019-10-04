@@ -1,4 +1,8 @@
 Dodatky ke školení:
 
-- environment_setup.R = kontrola základního nastevení erkové instalace
+- environment-setup.R = kontrola základního nastevení erkové instalace
 - master.tex = LaTeXová šablona pro hezčí pdf soubory
+- screenshot.png = aby úvodní stránka na GitHubu nevypadala tak smutně...
+- par-report-execute.R = spouštěcí soubor parametrických reportů
+- par-report-template.Rmd = template parametrických reportů (spouštěno z předchozího)
+- srovnání-modelů.R = srovnání lineárního a exponenciálního modelu ceny potravin

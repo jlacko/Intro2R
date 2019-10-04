@@ -6,3 +6,4 @@ Datasety:
 - pocet_obyvatel.xlsx = počet obyvatel po obcích ČR (otevřená data ČSÚ)
 - struktura_uzemi.xlsx = zařazení obcí do vyšších administrativních celků (otevřená data ČSÚ)
 - rozsypany_caj.csv = soubor rozsypaného čaje (text v encodingu ISO-8859-2)
+- RUR.rds = text divadelní hry Rossum's Universal Robots (R.U.R.) od Karla Čapka

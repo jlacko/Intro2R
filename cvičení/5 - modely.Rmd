@@ -1,0 +1,47 @@
+---
+title: "Cvičení: Modely"
+---
+
+```{r setup}
+
+library(tidyverse)
+
+potraviny <- read_csv2("../data/potraviny.csv")
+
+```
+
+#1.
+
+Máte dataset pivo; obsahuje průměrnou cenu jednoho piva za Českou republiku jako celek.
+
+Dataset dále obsahuje proměnnou date_ser, která představuje počet dní od Nového roku 1970.
+
+Natrénujte lineární model ceny podle sériového data (počtu dní od Nového roku 1970) a podejte o tom zprávu.
+
+
+```{r }
+
+pivo <- potraviny %>% 
+   filter(reprcen_kod == "0213201" & uzemi_kod == "19") %>% 
+   mutate(date_ser = as.numeric(obdobiod))
+   
+model <- lm(data = pivo, formula = ___ ~ ___)
+
+___(model)
+```
+
+#2.
+
+Máte natrénovaný model piva.
+
+Předpovězte cenu piva pro dnešní den (uvažujte 8. 10. 2019)
+
+```{r }
+
+fake_data <- data.frame(___ = ___)
+
+predict(model, newdata = ___)
+
+```
+
+

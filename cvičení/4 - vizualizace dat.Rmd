@@ -1,0 +1,140 @@
+---
+title: "Cvičení: Vizualizace dat"
+---
+
+```{r setup}
+
+library(tidyverse)
+
+potraviny <- read_csv2("../data/potraviny.csv")
+
+alkohol <- potraviny %>% 
+   filter(reprcen_kod %in% c("0213201", "0212101")
+          & uzemi_kod == 19)
+
+```
+
+#1. 
+Máte alkohol. Poznáte pivo od vína?
+
+Namapujte sloupec reprcen_txt postupně na barvu (color), tvar (shape), velikost (size) a průhlednost (alpha) zobrazených bodů.
+
+```{r}
+
+ggplot(data = alkohol, aes(x = obdobiod, y = hodnota)) +
+   geom_point() 
+
+```
+
+#2. 
+Máte alkohol z předchozího příkladu. Změňte typ grafu z bodového na čárový, informaci o typu alkoholu zvažte na typ čáry (line), tloušťku čáry(size) a barvu (color)
+
+Zvažte pro barvu čáry 
+- barevnou škálu metody paní Cynthie Brewer, hodnotu palety použijte od červené po zelenou ("RdYlGn").
+- barevnou škálu Viridis v diskrétní variantě
+- ruční (manual) barevnou škálu; jako hodnoty (values) uvažujte vektor barev chrpově modrá (cornflowerblue) a cihlově červená (firebrick).
+
+```{r}
+
+ggplot(data = alkohol, aes(x = obdobiod, y = hodnota, ___ = reprcen_txt)) +
+   geom_point() 
+
+```
+
+
+#3.
+Uvažujte alkohol. Druh namapujte na barvu, pozorování jako body.
+
+Přidejte škálu barev typu viridis v mutaci pro diskrétní hodnoty. Přidejte trendovou čáru metodou lineárního modelování (lm).
+
+Co by bylo potřeba udělat, aby se odstranil šedivý konfidenční interval?
+
+```{r}
+
+ggplot(data = alkohol, aes(x = obdobiod, y = hodnota, ___ = reprcen_txt)) +
+   geom___() +
+   scale___() +
+   geom___(___ =  "lm")
+   
+```
+
+
+#4.
+Uvažujte alkohol. Druh namapujte na barvu, vyneste body. 
+
+Boužijte barevnou škálu Viridis. Pro osu x použijte datumovou škálu s odstupy po 1 roku, pro osu y použijte měnovou škálu (je v balíčku scales).
+
+Odpovídají defaulty měny českému prostředí? Pokud ne, nastavte parametry prefix a suffix vhodněji.
+
+```{r}
+
+ggplot(data = alkohol, aes(x = obdobiod, y = hodnota, __ = reprcen_txt)) +
+   geom___() +
+   scale_color___() +
+   scale_x___(___) +
+   scale_y___(labels = __dollar_format())
+
+```
+
+#5.
+
+Uvažujte graf z předchozího příkladu. 
+
+Nastavte rozsah osy y tak, aby pokrýval hodnoty od nuly ke 125 (ta nula je důležitá! :)
+
+Nastavte hlavní titulek grafu (title) na "Alkohol", podtitulek (subtitle) na "vývoj jeho ceny v čase", osy x na "rok", osy y na "cena", legendy barvy (color) na "Druh pití" a poznámky pod čarou (caption) na "zdroj dat: otevřená data ČSÚ".
+
+```{r}
+
+
+
+```
+
+
+#6.
+Uvažujte vánoční spotřební koš. Graf ukazuje sloupec, opravte ho na koláč (zatočte do kolečka doplněním polárního souřadnicového systému; věnujte pozornost parametru théta = točíte podle x nebo y osy?).
+
+```{r}
+
+jezisek <- potraviny %>% 
+  filter(reprcen_kod %in% c("2000001", 
+                            "0212101", 
+                            "0213201")
+         & uzemi_kod == 19
+         & obdobiod >= "2018-12-01" 
+         & obdobido <= "2019-01-01") 
+
+ggplot(data = jezisek, aes(x = obdobiod, y = hodnota, fill = reprcen_txt)) +
+   geom_col()
+
+```
+
+#7.
+Tento graf by měl ukazovat cenu kapra po krajích České republiky; místo toho ukazuje v každém kraji hodnotu Mrkev [1 kg].
+
+- opravte pajpu tak, aby obsahovala kapra a ne mrkev
+- doplňte graf tak, aby mapoval cenu (a ne název) cenového reprezentanta
+- nastavte pro výplň (fill) spojitou barevnou škálu od bílé (white) po chrpově modrou (cornflowerblue)
+- upravte škálu výplně tak, aby popisky měly měnový formát; nastavte předponu a příponu podle českých zvyklostí
+- upravte téma grafu tak, aby byla legenda zobrazena vespod, a ne napravo
+- přidejte nadpis grafu "Vánoční kapřík", upravte téma tak, aby hlavní titulek byl o velikosti (size) 25 a zarovnání na střed (hjust = 0.5). Zvažte titulek tučný (face = "bold").
+- upravte téma (theme) grafu tak, aby bylo elegantnější; zvažte témata dark, bw, linedraw a void
+
+```{r}
+library(sf)
+
+kaprik <- potraviny %>% 
+  filter(reprcen_kod == "0117106"
+         & uzemi_kod != 19
+         & obdobiod >= "2017-12-01" 
+         & obdobido <= "2018-01-01") %>% 
+   mutate(uzemi_kod = as.character(uzemi_kod))
+
+kaprik <- inner_join(RCzechia::kraje("low"), kaprik, by = c("KOD_KRAJ" = "uzemi_kod"))
+
+ggplot(data = kaprik, aes(fill = reprcen_txt)) +
+   geom_sf() 
+
+```
+
+

@@ -1,0 +1,46 @@
+---
+title: 'Cvičení: Výstupy'
+output: word_document
+---
+
+```{r setup}
+
+library(tidyverse)
+
+potraviny <- read_csv2("../data/potraviny.csv")
+
+```
+
+Uložte tento soubor do formátu html (což je default; stačí knit). Je obsah úvodního chunku hezký? Vypněte vypisování zpráv a zkuste to ještě jednou.
+
+
+Doplňte své jméno jako autora (analogicky jako je titulek = title; nezapomeňte na dvojtečku). Co to udělá s výstupem?
+
+```{r mapa}
+kaprik <- potraviny %>% 
+  filter(reprcen_kod == "2000001"
+         & uzemi_kod != 19
+         & obdobiod >= "2017-12-01" 
+         & obdobido <= "2018-01-01") %>% 
+   mutate(uzemi_kod = as.character(uzemi_kod))
+
+kaprik <- inner_join(RCzechia::kraje("low"), kaprik, by = c("KOD_KRAJ" = "uzemi_kod"))
+
+ggplot() +
+   geom_sf(data = kaprik, aes(fill = hodnota), color = NA) +
+   geom_sf(data = RCzechia::republika("low"), fill = NA, color = "grey40") +
+   scale_fill_gradient(low = "white", high = "red") +
+   labs(title = "Veselý kapřík") +
+   theme_void()
+
+```
+
+Mapa je hezká, ale s kódem se trochu tluče. Zkuste:
+- vypnout exekuci kódu (ale nechat ho ukázaný)
+- vypnout ukazování kódu (ale nechat ho vykonaný)
+
+Uložte dokument do Wordu (output: word_document)
+
+Uložte dokument do Adobe Acrobat dokumentu (output: pdf_document)
+
+Zkuste použít šablonu z "../extras/master.tex" - vypadá lépe, nebo hůře než předchozí pdf? Je kód čitelnější? Věnujte pozornost šipce doleva :)

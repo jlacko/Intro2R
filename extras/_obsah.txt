@@ -6,3 +6,5 @@ Dodatky ke školení:
 - par-report-execute.R = spouštěcí soubor parametrických reportů
 - par-report-template.Rmd = template parametrických reportů (spouštěno z předchozího)
 - srovnání-modelů.R = srovnání lineárního a exponenciálního modelu ceny potravin
+- potraviny.sql = SQL skript ke přečtení z RStudia
+- read-db.R = erkový kód využívající připojení k databázi a potraviny.sql

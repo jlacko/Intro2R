@@ -129,7 +129,8 @@ graf <- chrt_src %>%
        subtitle = paste("počítáno ke dni", format(rozhodne_datum, "%d. %m. %Y")),
        color = "") +
   theme_minimal() +
-  theme(axis.title = element_blank()) # bez popisu os - jsou zjevné
+  theme(axis.title = element_blank(), # bez popisu os - jsou zjevné
+        legend.position = "bottom")
 
 plot(graf)
 

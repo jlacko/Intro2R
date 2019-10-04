@@ -1,13 +1,16 @@
 ---
 title: 'Cvičení: Výstupy'
-output: word_document
 ---
 
 ```{r setup}
 
 library(tidyverse)
+library(sf)
 
 potraviny <- read_csv2("../data/potraviny.csv")
+
+pdf.options(encoding = 'ISOLatin2.enc') # aby se tisklo hezky česky...
+
 
 ```
 
@@ -35,12 +38,10 @@ ggplot() +
 
 ```
 
-Mapa je hezká, ale s kódem se trochu tluče. Zkuste:
-- vypnout exekuci kódu (ale nechat ho ukázaný)
-- vypnout ukazování kódu (ale nechat ho vykonaný)
+Mapa je hezká, ale s kódem se trochu tluče. Zkuste:  
+- vypnout exekuci kódu (ale nechat ho ukázaný)  
+- vypnout ukazování kódu (ale nechat ho vykonaný)  
 
-Uložte dokument do Wordu (output: word_document)
+Uložte dokument do Wordu (output: <enter - tab> word_document)
 
-Uložte dokument do Adobe Acrobat dokumentu (output: pdf_document)
-
-Zkuste použít šablonu z "../extras/master.tex" - vypadá lépe, nebo hůře než předchozí pdf? Je kód čitelnější? Věnujte pozornost šipce doleva :)
+Uložte dokument do Adobe Acrobat dokumentu (output: <enter - tab> pdf_document: l<enter - tab -tab> latex_engine: xelatex) - za outputem a pdf_documentem enter a tabulátor.

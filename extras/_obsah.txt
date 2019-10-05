@@ -8,3 +8,4 @@ Dodatky ke školení:
 - srovnání-modelů.R = srovnání lineárního a exponenciálního modelu ceny potravin
 - potraviny.sql = SQL skript ke přečtení z RStudia
 - read-db.R = erkový kód využívající připojení k databázi a potraviny.sql
+- kacířství.py = pythonový skript, protože proč ne :)

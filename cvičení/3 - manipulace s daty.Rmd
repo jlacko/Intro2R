@@ -105,7 +105,43 @@ potraviny %>%
 
 ```
 
+
 # 7.
+Uvažujte pivo k prosinci 2017. Odstraňte hodnoty za republiku jako celek. Krajské hodnoty rozdělte na Prahu (kód kraje 3018) a zbytek světa. Pro obě skupiny spočtěte průměrnou cenu piva.
+
+```{r}
+
+potraviny %>% 
+  filter(reprcen_kod == ___
+         & uzemi_kod != ___
+         & obdobiod >= "2017-12-01" 
+         & obdobido <= "2018-01-01") %>% 
+   mutate(uzemi = ___) %>% 
+   group_by(___) %>% 
+   summarize(prumer = mean(hodnota))
+ 
+```
+
+# 8.
+Uvažujte pivo k prosinci 2017. Odstraňte hodnoty za republiku jako celek. Krajské hodnoty rozdělte na Prahu (kód kraje 3018) a zbytek světa. Pro obě skupiny spočtěte průměrnou cenu piva.
+
+```{r}
+
+potraviny %>% 
+  filter(reprcen_kod == ___
+  & obdobiod >= "2017-12-01" 
+         & obdobido <= "2018-01-01") %>% 
+   mutate(uzemi = case_when(uzemi_kod == ___ ~ "republika",
+                            ___ ~ "Praha",
+                            TRUE ~ "zbytek světa")) %>% 
+   group_by(___) %>% 
+   summarize(prumer = ___)
+ 
+```
+
+
+
+# 9.
 Uvažujte potraviny za Českou republiku. Pro každé datum obdobiod spočtěte náklady na výrobu pekáče buchet; buchty se skládají z 1/2 kg mouky, 2 vajec a decky mléka.
 
 ```{r}
@@ -115,12 +151,11 @@ potraviny %>%
    filter(reprcen_kod %in% c(___, ___, ___)) %>% 
    select(___, ___ , ___) %>% 
    ___(___, ___) %>% 
-   mutate(buchty = ___ * `0111201` + ___ * `0114201` + ___ * `0115101`)
-
+   mutate(buchty = .5 * `0111201` + .2 * `0114701` + .1 * `0114201`)
 
 ```
 
-# 8.
+# 10.
 Uvažujte tabulky obce a území. Jakou mají strukturu?
 Propojte je do objektu dataset pomocí společného klíče
 
@@ -130,7 +165,7 @@ dataset <- inner_join(obce, uzemi, by = c("__" = "__"))
 
 ```
 
-# 9.
+# 11.
 Uvažujte dataset obcí z předchozího příkladu. Spočtěte je podle statutu, a seřaďte od nejpočetnějšího k jediné Praze.
 
 ```{r }
@@ -143,7 +178,7 @@ dataset %>%
 
 ```
 
-# 10.
+# 12.
 Uvažujte dataset obcí. Vyberte tři největší městysy (městys je obec se statutem T).
 
 ```{r }

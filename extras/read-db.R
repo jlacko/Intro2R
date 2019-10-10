@@ -3,6 +3,7 @@ library(dbplyr)
 library(odbc)
 library(DBI)
 
+# připojení databáze - pozor, vyžaduje volný port 5432!! (může být problém v korporátu)
 con <- dbConnect(odbc::odbc(), driver = "PostgreSQL Unicode",
                  server = "db.jla-data.net", port = 5432, uid = "R4SU",
                  password = "R4SU", database = "R4SU")

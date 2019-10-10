@@ -10,7 +10,7 @@ potraviny <- read_csv2("../data/potraviny.csv")
 
 ```
 
-#1.
+# 1.
 
 Máte dataset pivo; obsahuje průměrnou cenu jednoho piva za Českou republiku jako celek.
 
@@ -30,7 +30,7 @@ model <- lm(data = pivo, formula = ___ ~ ___)
 ___(model)
 ```
 
-#2.
+# 2.
 
 Máte natrénovaný model piva.
 

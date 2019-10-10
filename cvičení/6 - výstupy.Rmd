@@ -2,10 +2,11 @@
 title: 'Cvičení: Výstupy'
 ---
 
-```{r setup}
+```{r setup, echo=T, message=T}
 
-library(tidyverse)
-library(sf)
+library(tidyverse)   # protože Tidyverse
+library(RCzechia)    # mapa krajů a republiky pro graf
+library(sf)          # pro práci s mapami
 
 potraviny <- read_csv2("../data/potraviny.csv")
 
@@ -13,13 +14,18 @@ pdf.options(encoding = 'ISOLatin2.enc') # aby se tisklo hezky česky...
 
 ```
 
-#1.
+- - - - - 
 
-Uložte tento soubor do formátu html (což je default; stačí knit). Je obsah úvodního chunku hezký? Vypněte vypisování zpráv a zkuste to ještě jednou.
+# 1.
 
-#2.
+Uložte tento soubor do formátu html (což je default; stačí knit). Je obsah úvodního chunku hezký? Vypněte:  
 
-Doplňte své jméno jako autora (analogicky jako je titulek = title; nezapomeňte na dvojtečku). Co to udělá s výstupem?
+- ukazování kódu (echo = ...)
+- vypisování zpráv (message = ...)
+
+Vypadá líp, že? :)
+
+- - - - -
 
 ```{r mapa, out.width="100%"}
 kaprik <- potraviny %>% 
@@ -29,11 +35,11 @@ kaprik <- potraviny %>%
          & obdobido <= "2018-01-01") %>% 
    mutate(uzemi_kod = as.character(uzemi_kod))
 
-kaprik <- inner_join(RCzechia::kraje("low"), kaprik, by = c("KOD_KRAJ" = "uzemi_kod"))
+kaprik <- inner_join(kraje("low"), kaprik, by = c("KOD_KRAJ" = "uzemi_kod"))
 
 ggplot() +
    geom_sf(data = kaprik, aes(fill = hodnota), color = NA) +
-   geom_sf(data = RCzechia::republika("low"), fill = NA, color = "grey25") +
+   geom_sf(data = republika("low"), fill = NA, color = "grey25") +
    geom_sf_text(data = kaprik, aes(label = hodnota), color = "grey25") +
    scale_fill_gradient(low = "white", high = "red") +
    labs(title = "Veselý kapřík",
@@ -42,12 +48,16 @@ ggplot() +
    theme(legend.position = "bottom")
 
 ```
-#3.
+
+# 2.
 
 Mapa je hezká, ale s kódem se trochu tluče. Zkuste:  
+
 - vypnout exekuci kódu (ale nechat ho ukázaný)  
 - vypnout ukazování kódu (ale nechat ho vykonaný)  
-- vypnout vypisování varování (point on surface & šířka s délkou)
+- vypnout vypisování varování (warning = ...)
+
+- - - - -
 
 ```{r tabulka}
 
@@ -59,15 +69,20 @@ jolly_carp
 
 ```
 
-#4.  
+
+# 3.  
 
 Tabulka vypsaná přes defaultní funkci print() není hezká; zabalte objekt jolly_carp do funkce knitr::kable() a skryjte kód tvořící tabulku.
 
-#5.  
+- - - - -
 
-Uložte dokument do Wordu (output: <enter - tab> word_document)
+# 4.  
 
-Uložte dokument do Adobe Acrobat dokumentu (output: <enter - tab> pdf_document: <enter - tab - tab> latex_engine: xelatex).
+Uložte dokument do Wordu 
+(output: word_document)
 
+Uložte dokument do Adobe Acrobat dokumentu, pozor!! nastavte Latexovou engine na XeLaTex.
 
-
+output: 
+   pdf_document: 
+      latex_engine: xelatex

@@ -1,0 +1,71 @@
+---
+title: "Pokročilá manipulace s daty"
+---
+
+```{r setup}
+
+library(tidyverse)
+
+potraviny <- read_csv2("../data/potraviny.csv")
+
+```
+
+
+# Denormalizace dat - přechod z úzkého & dlouhého datasetu na krátký & široký
+
+Uvažujte potraviny za Českou republiku. Pro každé datum obdobiod spočtěte náklady na výrobu pekáče buchet; buchty se skládají z 1/2 kg mouky, 2 vajec a decky mléka.
+
+Problém vyřeší jednoduché mutate, ale co dělat když data jsou v řádcích pod sebou? Data musíme denormalizovat...
+
+Pro denormalizaci použijte pivot_wider() z balíčku tidyr.
+
+```{r}
+
+buchty <- potraviny %>% 
+   filter(uzemi_kod == 19) %>%   # republika jako celek 
+   filter(reprcen_kod %in% c("0111201", "0114701", "0114201")) %>%  # mouka, vejce, mléko
+   select(obdobiod, reprcen_kod , hodnota) %>% 
+   pivot_wider(names_from = reprcen_kod, values_from = hodnota) %>% 
+   mutate(buchty = .5 * `0111201` + .2 * `0114701` + .1 * `0114201`)
+
+buchty
+
+```
+
+
+# Normalizace dat - přechod ze širokého zpět do úzkého formátu
+
+Přechod z denormalizovaného do normalizovaného stavu je vratný; převeďte buchty z tlustého na hubený formát.
+
+```{r}
+
+buchty %>% 
+   pivot_longer(cols = -obdobiod,  # mínus znamená, že období od se ponechá
+                names_to = "cenovy_reprezentant", # název proměnné s názvy sloupců
+                values_to = "hodnota") # název sloupce pro hodnoty
+
+```
+
+
+# Když - nebo s více možnostmi nežli dvěma
+
+Pro výběr ze dvou možností je dobré ifelse(); ale na tři a více hodnot nestačí.
+
+Zde pomůže case_when() z balíčku dplyr. Posuzuje postupně více variant - logická formule oddělená tildou od výsledku - s tím, že vrátí první výsledek, pro který je logická formule vyhodnocená jako pravda.
+
+Je dobrý zvyk mít jako poslední variantu logickou formuli TRUE, tj. formuli, co platí vždy. Tato 
+
+Uvažujte pivo k prosinci 2017. Hodnoty rozdělte na Prahu (kód kraje 3018), republiku jako celek (kód kraje 19) a zbytek světa. Pro všechny tři skupiny spočtěte průměrnou cenu piva.
+
+```{r}
+potraviny %>% 
+  filter(reprcen_kod == "0213201"
+         & obdobiod >= "2017-12-01" 
+         & obdobido <= "2018-01-01") %>% 
+   mutate(uzemi = case_when(uzemi_kod == 19 ~ "republika",
+                            uzemi_kod == 3018 ~ "město Praha",
+                            TRUE ~ "zbytek světa")) %>% 
+   group_by(uzemi) %>% 
+   summarize(prumer = mean(hodnota))
+ 
+```

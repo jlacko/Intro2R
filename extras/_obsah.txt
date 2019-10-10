@@ -7,5 +7,6 @@ Dodatky ke školení:
 - par-report-template.Rmd = template parametrických reportů (spouštěno z předchozího)
 - srovnání-modelů.R = srovnání lineárního a exponenciálního modelu ceny potravin
 - potraviny.sql = SQL skript ke přečtení z RStudia
-- read-db.R = erkový kód využívající připojení k databázi a potraviny.sql
+- read-db.R = erkový kód využívající připojení k databázi
 - kacířství.py = pythonový skript, protože proč ne :)
+- manipulace-extra.Rmd = praktické, ale složitější, příklady manipulace s daty

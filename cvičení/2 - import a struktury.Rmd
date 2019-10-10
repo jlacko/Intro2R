@@ -4,8 +4,8 @@ title: "Cvičení: Import a struktury"
 
 ```{r setup}
 
-library(readr)
-library(readxl)
+library(tidyverse) # připojí i knihovnu readr
+library(readxl)    # nutno připojit zvlášť 
 
 ```
 
@@ -42,7 +42,7 @@ potraviny <- ___
 ```
 
 
-#4.
+# 4.
 Proveďte kontrolní součet sloupce hodnota (očekávaná suma = 5460986.86).
 
 Uvažujte operátor dolar; $ = pravý Alt + ů
@@ -52,7 +52,7 @@ sum(___) == 5460986.86
 ```
 
 
-#5.
+# 5.
 Do objektu obyvatele načtěte obsah souboru pocet_obyvatel.xlsx z adresáře ../data
 (vykopírujte kód z importovacího dialogu; přeskočte prvních 5 řádků)
 
@@ -62,8 +62,9 @@ obyvatele <- ___
 
 ```
 
-#6.
-Proveďte kontrolní součet celkového počtu obyvatel (očekávaná hodnota = 10649800)
+# 6.
+Proveďte kontrolní součet celkového počtu obyvatel (očekávaná hodnota = 10649800).
+Pro potlačení prázných řádků jako chyb nastavte argument na.rm = T (defaultně je F)
 
 ```{r }
 
@@ -72,8 +73,8 @@ sum(___) == 10649800
 ```
 
 
-#7.
-Do objektu struktura načtěte ze souboru struktura_uzemi.txt oblast A2:C6260 z listu 1.1.2019 
+# 7.
+Do objektu struktura načtěte ze souboru struktura_uzemi.xlsx oblast A2:C6260 z listu 1.1.2019 
 (vykopírujte kód)
 
 ```{r }
@@ -83,7 +84,7 @@ struktura <- ___
 ```
 
 
-#8.
+# 8.
 Ověřte počty obcí dle statutů (H = hlavní město, S = statutární město etc.)
 Kolik je v ČR městysů (status typu T)?
 
@@ -93,10 +94,9 @@ table(___status)
 
 ```
 
-#9.
+# 9.
 Do proměnné rozsypany_caj načtěte text ze souboru ../data/rozsypany_caj.csv.
 Pozor, soubor je v netypickém kódování ISO-8859-2 (načtěte ho tak, aby byl čitelný!)
-
 
 ```{r }
 

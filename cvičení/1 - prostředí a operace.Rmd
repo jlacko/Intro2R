@@ -54,7 +54,6 @@ ___
 ```
 
 # 6. 
-
 Kóp s funkcí `qplot()` nefunguje, protože není připojen balíček `ggplot2`.
 Opravte ho! (= připojte balíček `ggplot2` před voláním funkce).
 
@@ -68,7 +67,7 @@ qplot(mtcars$mpg, mtcars$disp)
 # 7.
 Máte textovou konstantu "Karel". 
 
-Uplatněte na ní funkci počítající znaky (`nchar()`) a pak na výsledek funkci zobrazit (`print()`).
+Uplatněte na ní funkci počítající znaky (nchar()) a pak na výsledek funkci zobrazit (print()). Pozor, pajpa pokračuje směrem k print()!
 
 
 ```{r }
@@ -81,7 +80,6 @@ library(tidyverse)
 ```
 
 #8.
-
 Máte textový vektor KHM. Zobrazte ho (uplatněte na něj funkci View())
 
 ```{r }
@@ -95,11 +93,9 @@ View(___)
 
 
 #9.
-
 Tento kód nefunguje; opravte ho!
 
 ```{r }
-library(tidyverse)
 
 cisla <- c(10, 20, 30) 
 

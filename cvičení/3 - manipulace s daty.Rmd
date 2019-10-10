@@ -16,6 +16,7 @@ uzemi <- read_excel("../data/struktura_uzemi.xlsx",
 obce <- read_excel("../data/pocet_obyvatel.xlsx", skip = 5) %>% 
    select(kod = `LAU 2`, nazev = `...3`, obyvatel = `Total...4`) %>% 
    na.omit()
+
 ```
 
    
@@ -30,15 +31,13 @@ pivo <- potraviny %>%
    filter(___)
    
 ___(pivo) / ___(___)
-   
-   
+
 ```
 
 # 2. 
 Stále máte potraviny; do proměnné urquell uložte řádky piva (cenový reprezentant 0213201) za Plzeňský kraj (kód území 3042). Spočtěte řádky.
 
 ```{r}
-
 
 urquell <- potraviny %>% 
    filter(___)
@@ -53,12 +52,11 @@ Stále máte potraviny; do proměnné alkohol uložte řádky piva (cenový repr
 
 ```{r}
 
-
 alkohol <- potraviny %>% 
    filter(___)
    
 ___(alkohol)
-   
+
    
 ```
 
@@ -67,7 +65,6 @@ Uvažujte potraviny. Vyberte pivo a hodnoty za republiku jako celek. Vytvořte n
 Seskupte podle roku a zjistěte počet záznamů (tally je OK).
 
 ```{r}
-
 
 potraviny %>% 
    filter(___) %>% 
@@ -81,7 +78,6 @@ potraviny %>%
 Uvažujte pivo za republiku po letech z minulého příkladu. Místo počtu řádků zjistěte průměrnou cenu po letech.
 
 ```{r}
-
 
 potraviny %>% 
    filter(___) %>% 
@@ -122,40 +118,8 @@ potraviny %>%
  
 ```
 
+
 # 8.
-Uvažujte pivo k prosinci 2017. Odstraňte hodnoty za republiku jako celek. Krajské hodnoty rozdělte na Prahu (kód kraje 3018) a zbytek světa. Pro obě skupiny spočtěte průměrnou cenu piva.
-
-```{r}
-
-potraviny %>% 
-  filter(reprcen_kod == ___
-  & obdobiod >= "2017-12-01" 
-         & obdobido <= "2018-01-01") %>% 
-   mutate(uzemi = case_when(uzemi_kod == ___ ~ "republika",
-                            ___ ~ "Praha",
-                            TRUE ~ "zbytek světa")) %>% 
-   group_by(___) %>% 
-   summarize(prumer = ___)
- 
-```
-
-
-
-# 9.
-Uvažujte potraviny za Českou republiku. Pro každé datum obdobiod spočtěte náklady na výrobu pekáče buchet; buchty se skládají z 1/2 kg mouky, 2 vajec a decky mléka.
-
-```{r}
-
-potraviny %>% 
-   filter(___) %>% 
-   filter(reprcen_kod %in% c(___, ___, ___)) %>% 
-   select(___, ___ , ___) %>% 
-   ___(___, ___) %>% 
-   mutate(buchty = .5 * `0111201` + .2 * `0114701` + .1 * `0114201`)
-
-```
-
-# 10.
 Uvažujte tabulky obce a území. Jakou mají strukturu?
 Propojte je do objektu dataset pomocí společného klíče
 
@@ -165,20 +129,7 @@ dataset <- inner_join(obce, uzemi, by = c("__" = "__"))
 
 ```
 
-# 11.
-Uvažujte dataset obcí z předchozího příkladu. Spočtěte je podle statutu, a seřaďte od nejpočetnějšího k jediné Praze.
-
-```{r }
-
-dataset %>% 
-   ___(status) %>% 
-   tally() %>% 
-   ___(__ (n))
-   
-
-```
-
-# 12.
+# 9.
 Uvažujte dataset obcí. Vyberte tři největší městysy (městys je obec se statutem T).
 
 ```{r }

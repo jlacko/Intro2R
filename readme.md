@@ -2,7 +2,7 @@
 
 Podkladové materiály ke školení Úvod do jazyka R od Jindry Lacka. 
 
-Materiály ke kurzu běží v cloudovém erku na https://rstudio.cloud/project/499564; pro získání lokální kopie využijte tlačítko **Clone or download** zde na GitHubu. Kdo se cítí klonuje přes git, kdo se necítí stahne zip - výsledek je totožný.
+Materiály ke kurzu běží v cloudovém erku na https://rstudio.cloud/project/499564; pro získání lokální kopie využijte tlačítko **Clone or download** zde na GitHubu. Kdo se cítí klonuje přes git, kdo se necítí stáhne zip - výsledek je totožný.
 
 <p align="center">
   <img src="./extras/screenshot.png" alt="jak na stažení?"/>
@@ -12,7 +12,7 @@ Struktura repozitáře je jednoduchá:
 
 * `/prezentace` obsahuje průvodní slidy ve formátu Libre Office Impress
 * `/cvičení` obsahuje cvičení ve formátu R Markdown, respektive R
-* `/data` obsahuje pokdladová data ke cvičení (otevřená data ČSÚ + plný text Čapkovo hry RUR)
+* `/data` obsahuje podkladová data ke cvičení (otevřená data ČSÚ + plný text Čapkovo hry RUR)
 * `/taháky` obsahuje výběr základních Cheatsheets z https://rstudio.com/resources/cheatsheets/
 * `/extras` obsahuje rozšiřující a doplňující materiály
 

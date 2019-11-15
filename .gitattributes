@@ -9,6 +9,7 @@ libs/* linguist-vendored
 *.html linguist-documentation
 *.pdf linguist-documentation
 *_files/* linguist-documentation
+*.Rmd linguist-language=R
 
 # Source files
 # ============
@@ -17,8 +18,8 @@ libs/* linguist-vendored
 *.rds   binary
 *.Rd    text
 *.Rdx   binary
-*.Rmd	text
-*.R  	text
-*.csv text
-*.xlsx binary
-*.xls binary   
+*.Rmd   text
+*.R     text
+*.csv   text
+*.xlsx  binary
+*.xls   binary   

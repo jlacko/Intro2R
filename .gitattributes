@@ -9,7 +9,7 @@ libs/* linguist-vendored
 *.html linguist-documentation
 *.pdf linguist-documentation
 *_files/* linguist-documentation
-*.Rmd linguist-language=R
+*.Rmd linguist-detectable=true
 
 # Source files
 # ============

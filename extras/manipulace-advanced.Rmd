@@ -53,7 +53,7 @@ Pro výběr ze dvou možností je dobré ifelse(); ale na tři a více hodnot ne
 
 Zde pomůže case_when() z balíčku dplyr. Posuzuje postupně více variant - logická formule oddělená tildou od výsledku - s tím, že vrátí první výsledek, pro který je logická formule vyhodnocená jako pravda.
 
-Je dobrý zvyk mít jako poslední variantu logickou formuli TRUE, tj. formuli, co platí vždy. Tato 
+Je dobrý zvyk mít jako poslední variantu logickou formuli TRUE, tj. formuli, co platí vždy. 
 
 Uvažujte pivo k prosinci 2017. Hodnoty rozdělte na Prahu (kód kraje 3018), republiku jako celek (kód kraje 19) a zbytek světa. Pro všechny tři skupiny spočtěte průměrnou cenu piva.
 

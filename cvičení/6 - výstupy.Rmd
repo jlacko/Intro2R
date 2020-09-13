@@ -81,8 +81,3 @@ Tabulka vypsaná přes defaultní funkci print() není hezká; zabalte objekt jo
 Uložte dokument do Wordu 
 (output: word_document)
 
-Uložte dokument do Adobe Acrobat dokumentu, pozor!! nastavte Latexovou engine na XeLaTex.
-
-output: 
-   pdf_document: 
-      latex_engine: xelatex

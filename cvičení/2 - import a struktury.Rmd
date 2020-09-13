@@ -64,7 +64,7 @@ obyvatele <- ___
 
 # 6.
 Proveďte kontrolní součet celkového počtu obyvatel (očekávaná hodnota = 10649800).
-Pro potlačení prázných řádků jako chyb nastavte argument na.rm = T (defaultně je F)
+Pro potlačení prázných řádků jako chyb nastavte argument na.rm = TRUE (defaultně je FALSE)
 
 ```{r }
 

@@ -34,7 +34,7 @@ ___(model)
 
 Máte natrénovaný model piva.
 
-Předpovězte cenu piva pro dnešní den (uvažujte 8. 10. 2019).
+Předpovězte cenu piva pro dnešní den (uvažujte 1. 10. 2020).
 
 ```{r }
 
